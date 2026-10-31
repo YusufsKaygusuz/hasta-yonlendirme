@@ -1,0 +1,18 @@
+# systemd user service for the kiosk. Install with:
+#   cp deploy/hasta-yonlendirme.service ~/.config/systemd/user/
+#   systemctl --user enable --now hasta-yonlendirme
+[Unit]
+Description=Hasta Yönlendirme patient wayfinding kiosk
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+EnvironmentFile=/etc/hasta-yonlendirme/env
+Environment=DISPLAY=:0
+WorkingDirectory=%h/hasta-yonlendirme
+ExecStart=%h/hasta-yonlendirme/.venv/bin/hasta-yonlendirme --config /etc/hasta-yonlendirme/config.toml run
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

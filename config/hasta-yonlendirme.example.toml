@@ -1,0 +1,51 @@
+# hasta-yonlendirme configuration
+#
+# Copy to ./hasta-yonlendirme.toml (or /etc/hasta-yonlendirme/config.toml) and adjust.
+# Every setting is optional; the values below are the defaults.
+# Secrets are NOT read from this file, only from environment variables:
+#   HY_ID_PEPPER    secret used to hash national ID numbers (required)
+#   HY_DB_PASSWORD  MySQL password (only for backend = "mysql")
+
+[kiosk]
+language = "tr"                   # "tr" or "en"
+fullscreen = true
+hospital_name = ""                # shown in the top-left corner
+result_seconds = 12.0             # how long a route stays on screen
+manual_entry_timeout_seconds = 45.0
+
+[camera]
+backend = "opencv"                # "opencv" (USB webcam) or "picamera2" (Raspberry Pi camera module)
+device = 0                        # OpenCV camera index
+width = 640
+height = 480
+
+[recognition]
+detection_model = "hog"           # "hog" runs in real time on a Raspberry Pi 4; "cnn" needs a GPU
+downscale = 0.5                   # shrink frames before detection: smaller is faster
+tolerance = 0.5                   # max face distance for a match; lower is stricter
+ambiguity_margin = 0.06           # best match must beat the runner-up by this much
+confirm_frames = 3                # consecutive frames that must agree
+min_face_size = 60                # ignore faces smaller than this (pixels, after downscaling)
+gallery_refresh_seconds = 300.0   # reload encodings to pick up new enrolments
+
+[database]
+backend = "sqlite"                # "sqlite" or "mysql"
+path = "data/hasta-yonlendirme.db"
+# MySQL only:
+host = "localhost"
+port = 3306
+name = "hasta_yonlendirme"
+user = "kiosk"
+password_env = "HY_DB_PASSWORD"
+
+[privacy]
+pepper_env = "HY_ID_PEPPER"
+
+[routing]
+early_arrival_minutes = 240       # show an appointment up to 4 hours before it starts
+late_arrival_minutes = 60         # ...and up to 1 hour after
+
+[audio]
+enabled = true                    # espeak-ng on Linux (sudo apt install espeak-ng), "say" on macOS
+voice = ""                        # empty = kiosk language (macOS: Yelda for "tr", Samantha for "en")
+speed = 150

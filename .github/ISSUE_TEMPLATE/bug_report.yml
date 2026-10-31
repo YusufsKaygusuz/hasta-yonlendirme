@@ -1,0 +1,46 @@
+name: Bug report
+description: Something does not work as described
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Please **do not** include real patient names, ID numbers or photos.
+        Security or privacy problems go to the private channel in SECURITY.md instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: Output of the command with `-v`, if relevant.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      placeholder: "hasta-yonlendirme --version"
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Raspberry Pi 4
+        - Raspberry Pi 5
+        - Other Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+  - type: input
+    id: camera
+    attributes:
+      label: Camera
+      placeholder: "Pi Camera Module v2 / USB webcam model"

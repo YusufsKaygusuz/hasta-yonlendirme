@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security or privacy issue
+    url: https://github.com/YusufsKaygusuz/hasta-yonlendirme/security/advisories/new
+    about: Report privately, not in a public issue.

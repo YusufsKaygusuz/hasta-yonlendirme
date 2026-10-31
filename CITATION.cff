@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "hasta-yonlendirme: A contactless face recognition kiosk for patient wayfinding in hospitals"
+type: software
+authors:
+  - family-names: Kaygusuz
+    given-names: Yusuf Sami
+    affiliation: Yalova University, Department of Computer Engineering
+version: 1.0.0
+date-released: 2026-10-31
+license: MIT
+repository-code: "https://github.com/YusufsKaygusuz/hasta-yonlendirme"
+url: "https://www.yusufskaygusuz.com/en/posts/yuz-tanima-hasta-yonlendirme/"
+abstract: >-
+  A low-cost kiosk that recognises patients at a hospital entrance, looks up their
+  appointment and shows the way to the clinic, with a national-ID fallback and
+  privacy-preserving storage. Developed as a TÜBİTAK 2209-A undergraduate research project.
+keywords:
+  - face recognition
+  - raspberry pi
+  - hospital wayfinding
+  - patient routing
+  - kiosk
